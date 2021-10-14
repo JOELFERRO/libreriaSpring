@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+        <link rel="stylesheet" href="../static/index.css" th:href="@{/index.css}">
+        
+    </head>
+    <body>
+      <div class="py-5 text-center">
+
+            <h3 style="margin-top: 80px; text-align: center;">Modificar Autor</h3>
+            <form th:action="@{/autor/modificar_autor/__${id}__/__${nombre}__}" method="POST"> 
+<!--                <p th:if="${errorE != null}" th:text="${errorE}" style="color: red;"></p>-->
+                <div class="form-group">
+                    <br>
+                    <label for="exampleInputNombre">Ingrese el nuevo nombre:</label>
+                    <input type="text" class="form-control" name="nombre" th:value="${nombre}"/>
+                </div>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+            <br>
+        </div>    
+    </body>
+</html>

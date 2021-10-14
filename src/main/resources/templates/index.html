@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+        <link rel="stylesheet" href="../static/index.css" th:href="@{/index.css}">
+
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="py-5 text-center"><h1>LIBRERIA SPRING</h1></div>
+            <br>
+            <div class="col-lg-6 orderr-lg-1">
+
+                <!--LIBRO-->
+                <h3 class="display-4">Cargar Libro</h3>
+                <form th:action="@{/libro/guardarLibro}" method="POST"> 
+                    <p th:if="${error != null}" th:text="${error}" style="color: red;"></p>
+                    <div class="form-group">
+                        <br>
+                        <label for="exampleInputtitulo">Título:</label>
+                        <input type="text" class="form-control" name="titulo">
+                        <label for="exampleInputnombreAutor">Autor:</label>
+                        <input type="text" class="form-control" name="nombreAutor">
+                        <label for="exampleInputnombreEditorial">Editorial:</label>
+                        <input type="text" class="form-control" name="nombreEditorial">
+                        <label for="exampleInputnombreEditorial">Número de ejemplares:</label>
+                        <input type="number" class="form-control" name="stock">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+                <br>
+                <button><a th:href="@{/libro/listar_libros}">Listado de Libros</a></button>
+                <br>
+
+                <br>
+                <br>
+
+                <!--AUTOR-->
+                <h3 class="display-4">Cargar Autor</h3>
+                <form th:action="@{/autor/registrarAutor}" method="POST"> 
+                    <p th:if="${errorA != null}" th:text="${errorA}" style="color: red;"></p>
+                    <div class="form-group">
+                        <br>
+                        <label for="exampleInputNombre">Nombre:</label>
+                        <input type="text" class="form-control" name="nombre">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+                <br>
+                <button><a th:href="@{/autor/listar_autores}">Lista de Autores</a></button>
+                <br>
+
+                <br>
+                <br>
+
+                <!--EDITORIAL-->
+                <h3 class="display-4">Cargar Editorial</h3>
+                <form th:action="@{/editorial/registrarEditorial}" method="POST">
+                    <p th:if="${errorE != null}" th:text="${errorE}" style="color: red;"></p>
+                    <div class="form-group">
+                        <br>
+                        <label for="exampleInputNombre">Nombre:</label>
+                        <input type="text" class="form-control" name="nombre">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+                <br>
+                <button><a th:href="@{/editorial/listar_editorial}">Lista de Editoriales</a></button>
+                <br>
+            </div>
+    </body>
+</html>
