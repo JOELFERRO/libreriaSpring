@@ -15,7 +15,7 @@
 
             <h3 style="margin-top: 80px; text-align: center;">Modificar Editorial</h3>
             <form th:action="@{/editorial/modificar_editorial/__${id}__/__${nombre}__}" method="POST"> 
-<!--                <p th:if="${errorE != null}" th:text="${errorE}" style="color: red;"></p>-->
+                <p th:if="${errorE != null}" th:text="${errorE}" style="color: red;"></p>
                 <div class="form-group">
                     <br>
                     <label for="exampleInputNombre">Ingrese el nuevo nombre:</label>

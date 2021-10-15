@@ -37,7 +37,7 @@ public class EditorialController {
     }
     
     @RequestMapping("/eliminarEditorial")
-    public String eliminarEditorial(String id){
+    public String eliminarEditorial(String id) throws ErrorServicio{
         try{
           editorialServicio.eliminarEditorial(id);
         return "redirect:/editorial/listar_editorial"; 

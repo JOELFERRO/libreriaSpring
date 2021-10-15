@@ -75,7 +75,7 @@ public class LibroController {
         
         Optional<Libro> libro = libroServicio.findEditorialById(id);
         model.addAttribute ("libro", libro);
-
+        
         return "editar_libro"; 
     } 
     
@@ -83,18 +83,21 @@ public class LibroController {
     public String modificarLibro(@PathVariable String id, @RequestParam String titulo, @RequestParam String nombreAutor, @RequestParam String nombreEditorial, @RequestParam Integer stock){
         
         try {
-            String autorAnterior = libroRep.findById(id);
-            Autor autor = autorRep.getById(autorRep.buscarPorNombre(nombreAutor).getId());
-            autorServicio.editarAutor(autor.getId(), nombreAutor);
-            
-            Editorial editorial =  editorialRep.getById(editorialRep.buscarPorNombre(nombreEditorial).getId());
-            editorialServicio.editarEditorial(editorial.getId(), nombreEditorial);
-            
-            libroServicio.editarLibro(id, titulo, autor, editorial, stock);
+            //1° Creo un objeto Libro similar al original; para poder traer el autor y la editorial.
+                Libro libro = libroRep.getById(id);
+            //2° Creo un objeto Autor similar al original para poder usar el id en el método "editarAutor"
+                Autor autor = libro.getAutor();
+            //3° Este método setea el nombre del autor original por el nuevo(nombreAutor)
+                autorServicio.editarAutor(autor.getId(), nombreAutor);
+            //4° Hago lo mismo con Editorial
+                Editorial editorial = libro.getEditorial();
+                editorialServicio.editarEditorial(editorial.getId(), nombreEditorial);
+            //5°
+                libroServicio.editarLibro(id, titulo, autor, editorial, stock);
         } catch (ErrorServicio ex) {
 //            System.out.println("Error al guardar");
         }
-      return "redirect:/libro/listar_libros";
+        return "redirect:/libro/listar_libros";
     }
     
      @GetMapping("/listar_libros")
