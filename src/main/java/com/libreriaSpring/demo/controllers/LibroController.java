@@ -40,8 +40,12 @@ public class LibroController {
     private AutorRepository autorRep;
     
     
+    @GetMapping("/cargar_libro")
+    public String cargarLibro(){
+        return "cargar_libro";
+    }
     
-    @PostMapping("/guardarLibro")
+    @PostMapping("/guardar_libro")
     public String guardarLibro(Model model, @RequestParam String titulo, @RequestParam String nombreAutor, @RequestParam String nombreEditorial, @RequestParam Integer stock){
     
         try {    

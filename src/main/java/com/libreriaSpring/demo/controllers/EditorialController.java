@@ -23,7 +23,13 @@ public class EditorialController {
     private EditorialServicio editorialServicio;
     
     //EDITORIAL
-    @PostMapping("/registrarEditorial")
+    
+    @GetMapping("/cargar_editorial")
+    public String cargarEditorial(){
+        return "/cargar_editorial";
+    }
+    
+    @PostMapping("/registrar_editorial")
     public String registrarEditorial(Model modelo, @RequestParam String nombre) {
         
         try {    
@@ -31,7 +37,7 @@ public class EditorialController {
         } catch (ErrorServicio ex) {
             modelo.addAttribute("errorE", ex.getMessage());
             java.util.logging.Logger.getLogger(EditorialController.class.getName()).log(Level.SEVERE, null, ex);
-            return "index";
+            return "redirect:/editorial/registrar_editorial";
         }
         return "index";
     }

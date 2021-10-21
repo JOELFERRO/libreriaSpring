@@ -24,7 +24,13 @@ public class AutorController {
     private AutorServicio autorServicio;
     
     //AUTOR
-    @PostMapping("/registrarAutor")
+   
+    @GetMapping("/cargar_autor")
+    public String cargarAutor(){
+        return "/cargar_autor";
+    }
+    
+    @PostMapping("/registrar_autor")
     public String registrarAutor(Model model, @RequestParam String nombre){
         
         try {
@@ -32,6 +38,7 @@ public class AutorController {
         } catch (ErrorServicio ex) {
             model.addAttribute("errorA", ex.getMessage());
             Logger.getLogger(AutorController.class.getName()).log(Level.SEVERE, null, ex);
+            return "redirect:/autor/registrar_autor";
         }
         return "index";
     }

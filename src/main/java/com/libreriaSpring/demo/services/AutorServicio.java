@@ -51,7 +51,7 @@ public class AutorServicio {
         autorRepository.save(autor);
     }
     
-      @Transactional
+    @Transactional
     public Optional<Autor> findAutorById(String id){
         return autorRepository.findById(id);
     }
