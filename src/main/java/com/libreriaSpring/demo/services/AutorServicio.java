@@ -22,6 +22,7 @@ public class AutorServicio {
         validacion(nombre);
         
         Autor autor = new Autor();
+        
         autor.setNombre(nombre);
         Date hoy = new Date();
         autor.setAlta(hoy);

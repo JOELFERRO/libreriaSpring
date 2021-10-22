@@ -2,11 +2,11 @@ package com.libreriaSpring.demo.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -27,8 +27,8 @@ public class Prestamo implements Serializable {
     
     private Boolean alta;
     
-    @OneToOne
-    private Libro libro;
+    @ManyToMany
+    private List <Libro> libro;
     @OneToOne
     private Cliente cliente;
 
@@ -39,7 +39,7 @@ public class Prestamo implements Serializable {
         this.entrega = entrega;
         this.devolucion = devolucion;
         this.alta = alta;
-        this.libro = libro;
+        this.libro = (List<Libro>) libro;
         this.cliente = cliente;
     }
 
@@ -76,11 +76,11 @@ public class Prestamo implements Serializable {
     }
 
     public Libro getLibro() {
-        return libro;
+        return (Libro) libro;
     }
 
     public void setLibro(Libro libro) {
-        this.libro = libro;
+        this.libro = (List<Libro>) libro;
     }
 
     public Cliente getCliente() {

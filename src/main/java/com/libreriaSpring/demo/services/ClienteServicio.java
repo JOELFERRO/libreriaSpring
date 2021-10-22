@@ -3,6 +3,7 @@ package com.libreriaSpring.demo.services;
 import com.libreriaSpring.demo.entities.Cliente;
 import com.libreriaSpring.demo.exceptions.ErrorServicio;
 import com.libreriaSpring.demo.repositories.ClienteRepository;
+import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,10 +24,19 @@ public class ClienteServicio{
         cliente.setNombre(nombre);
         cliente.setDocumento(documento);
         cliente.setTelefono(telefono);
-        cliente.setAlta(Boolean.TRUE);
+        cliente.setAlta(true);
         
-        clienteRepository.save(cliente);
+        if (clienteRepository.findAll().contains(clienteRepository.buscarPorNombre(nombre))) {
+            System.out.println("El Cliente ya se encuentra registrado");
+        }else{
+            clienteRepository.save(cliente);   
+            
+        }
         
+    }
+    
+    public List<Cliente> listarClientes(){
+        return clienteRepository.findAll();
     }
     
     private void validacion(String nombre, Long documento, String telefono)  throws ErrorServicio{

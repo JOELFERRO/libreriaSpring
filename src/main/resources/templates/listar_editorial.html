@@ -20,54 +20,9 @@
         </style>
     </head>
     <body>
-        <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="container-fluid">
-                    <a class="navbar-brand" th:href="@{/}">LIBRERIA SPRING</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown"
-                            aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-                        <ul class="navbar-nav">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
-                                   data-bs-toggle="dropdown" aria-expanded="false">
-                                    Libro
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                                    <li><a class="dropdown-item" th:href="@{/libro/cargar_libro}">Cargar Libro</a></li>
-                                    <li><a class="dropdown-item" th:href="@{/libro/listar_libros}">Lista de Libros</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
-                                   data-bs-toggle="dropdown" aria-expanded="false">
-                                    Editorial
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                                    <li><a class="dropdown-item" th:href="@{/editorial/cargar_editorial}">Cargar Editorial</a></li>
-                                    <li><a class="dropdown-item" th:href="@{/editorial/listar_editorial}">Lista de Editoriales</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
-                                   data-bs-toggle="dropdown" aria-expanded="false">
-                                    Autor
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                                    <li><a class="dropdown-item" th:href="@{/autor/cargar_autor}">Cargar Autor</a></li>
-                                    <li><a class="dropdown-item" th:href="@{/autor/listar_autores}">Lista de Autores</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <span class="navbar-text">
-                            <!-- Texto en la barra  -->
-                        </span>
-                    </div>
-                </div>
-            </nav>
-        </div>
+        
+        <header th:insert="index :: NavBar_index" header></header>
+        
         <div class="container">
             <br>
             <h3 class="display-2">Editorial</h3>

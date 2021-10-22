@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>TODO supply a title</title>
@@ -13,23 +12,34 @@
         <link rel="stylesheet" href="../static/index.css" th:href="@{/index.css}">
 
     </head>
-    <body>
-        
-        <header th:insert="index :: NavBar_index" header></header></div>
-    
-        <div class="py-5 text-center">
 
-            <h3 style="margin-top: 80px; text-align: center;">Modificar Autor</h3>
-            <form th:action="@{/autor/modificar_autor/__${id}__/__${nombre}__}" method="POST"> 
-                <p th:if="${errorE != null}" th:text="${errorE}" style="color: red;"></p>
+    <body>
+
+        <header th:insert="index :: NavBar_index" header></header>
+        
+        <div class="container">           
+            <br>
+            <h3 class="display-2">Cliente</h3>
+            <br>
+            <br>
+            <h3 class="display-8">Cargar Cliente</h3>
+            <form th:action="@{/cliente/guardar_cliente}" method="POST"> 
+                <p th:if="${errorA != null}" th:text="${errorA}" style="color: red;"></p>
                 <div class="form-group">
                     <br>
-                    <label for="exampleInputNombre">Ingrese el nuevo nombre:</label>
-                    <input type="text" class="form-control" name="nombre" th:value="${nombre}"/>
+                    <label for="exampleInputNombre">Nombre:</label>
+                    <input type="text" class="form-control" name="nombre">
+                    <label for="exampleInputNombre">Documento:</label>
+                    <input type="number" class="form-control" name="nombre">
+                    <label for="exampleInputNombre">Teléfono:</label>
+                    <input type="text" class="form-control" name="nombre">
                 </div>
                 <button type="submit" class="btn btn-primary">Guardar</button>
             </form>
             <br>
-        </div>    
+            <br>
+            <br>
+            <button class="btn bg-dark"><a th:href="@{/cliente/listar_clientes}">Lista de Clientes</a></button>
+        </div>
     </body>
 </html>

@@ -19,29 +19,33 @@
     </head>
     <body>
         
-        <header th:insert="index :: NavBar_index" header></header>
-        
+       <header th:insert="index :: NavBar_index" header></header>
+       
         <div class="container">
             <br>
-            <h3 class="display-2">Autor</h3>
+            <h3 class="display-2">Cliente</h3>
             <br>
             <br>
-            <h3 class="display-8">Lista de Autores</h3>
+            <h3 class="display-8">Lista de Clientes</h3>
             <table>
                 <thead>
                 <th>Id</th>
-                <th>Autor</th>
-                <th>Fecha de Alta</th>
+                <th>Nombre</th>
+                <th>Documento</th>
+                <th>Teléfono</th>
+                <th>Alta</th>
                 <th>Editar</th>
                 <th>Eliminar</th>
                 </thead>
                 <tbody>
-                    <tr th:each="autor:${autores}">
-                        <td th:text="${autor.id}">id</td>
-                        <td th:text="${autor.nombre}">nombre</td>
-                        <td th:text="${autor.alta}">alta</td>
-                        <td><a th:href="@{/autor/editar_autor/__${autor.id}__}">Editar</a></td>
-                        <td><a th:href="@{/autor/eliminarAutor(id=${autor.id})}">Eliminar</a></td>
+                    <tr th:each="cliente:${clientes}">
+                        <td th:text="${cliente.id}">id</td>
+                        <td th:text="${cliente.nombre}">nombre</td>
+                        <td th:text="${cliente.documento}">documento</td>
+                        <td th:text="${cliente.telefono}">telefono</td>
+                        <td th:text="${cliente.alta}">alta</td>
+                        <td><a th:href="@{/cliente/editar_cliente/__${cliente.id}__}">Editar</a></td>
+                        <td><a th:href="@{/cliente/eliminarCliente(id=${cliente.id})}">Eliminar</a></td>
                     </tr>
                 </tbody>
             </table>
