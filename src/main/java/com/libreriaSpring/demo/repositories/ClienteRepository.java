@@ -7,6 +7,6 @@ import org.springframework.data.repository.query.Param;
 
 public interface ClienteRepository extends JpaRepository<Cliente, String>{
 
-    @Query("SELECT c FROM Cliente c WHERE c.nombre = :nombre")
-    public Cliente buscarPorNombre(@Param("nombre")String nombre);
+    @Query("SELECT c FROM Cliente c WHERE c.documento = :documento")
+    public Cliente buscarPorDocumento(@Param("documento")String documento);
 }

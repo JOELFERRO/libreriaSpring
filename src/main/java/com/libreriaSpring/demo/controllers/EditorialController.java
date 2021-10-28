@@ -6,9 +6,11 @@ import com.libreriaSpring.demo.services.EditorialServicio;
 import java.util.List;
 import java.util.Optional;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,14 +32,16 @@ public class EditorialController {
     }
     
     @PostMapping("/registrar_editorial")
-    public String registrarEditorial(Model modelo, @RequestParam String nombre) {
+    public String registrarEditorial(ModelMap model, @RequestParam String nombre) {
         
         try {    
             editorialServicio.guardarEditorial(nombre);
         } catch (ErrorServicio ex) {
-            modelo.addAttribute("errorE", ex.getMessage());
-            java.util.logging.Logger.getLogger(EditorialController.class.getName()).log(Level.SEVERE, null, ex);
-            return "redirect:/editorial/registrar_editorial";
+            model.put("errorE", ex.getMessage());
+            model.put("nombre", nombre);
+            
+            Logger.getLogger(EditorialController.class.getName()).log(Level.SEVERE, null, ex);
+            return "/cargar_editorial";
         }
         return "index";
     }

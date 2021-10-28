@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,14 +32,16 @@ public class AutorController {
     }
     
     @PostMapping("/registrar_autor")
-    public String registrarAutor(Model model, @RequestParam String nombre){
+    public String registrarAutor(ModelMap model, @RequestParam String nombre){
         
         try {
             autorServicio.guardarAutor(nombre);
         } catch (ErrorServicio ex) {
-            model.addAttribute("errorA", ex.getMessage());
+            model.put("errorA", ex.getMessage());
+            model.put("nombre", nombre);
+            
             Logger.getLogger(AutorController.class.getName()).log(Level.SEVERE, null, ex);
-            return "redirect:/autor/registrar_autor";
+            return "/cargar_autor";
         }
         return "index";
     }

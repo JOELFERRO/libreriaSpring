@@ -21,3 +21,12 @@ modal {
 font-size: 20px;
 
 }
+
+.form-control {
+	background-color: #FFFFFF;
+        border: 1px solid #0291DD;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+        color: black; 
+	font-size: 20px;
+        
+}

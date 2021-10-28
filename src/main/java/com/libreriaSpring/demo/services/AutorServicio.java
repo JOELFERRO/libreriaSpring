@@ -28,10 +28,9 @@ public class AutorServicio {
         autor.setAlta(hoy);
         
         if (autorRepository.findAll().contains(autorRepository.buscarPorNombre(nombre))) {
-            System.out.println("El Autor ya se encuentra registrado");
+            throw new ErrorServicio("El Autor ya se encuentra registrado");
         }else{
-            autorRepository.save(autor);   
-            
+            autorRepository.save(autor);           
         }
         
     }
@@ -64,7 +63,6 @@ public class AutorServicio {
     private void validacion(String nombre)  throws ErrorServicio{
         /*Validaciones*/
         if (nombre == null || nombre.isEmpty()) {
-            System.out.println("El nombre del autor no puede ser nulo o estar vacío.");
             throw new ErrorServicio("El nombre del autor no puede ser nulo o estar vacío.");
         }
     }

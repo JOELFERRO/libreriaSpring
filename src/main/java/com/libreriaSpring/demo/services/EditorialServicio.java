@@ -22,15 +22,15 @@ public class EditorialServicio {
         validacion(nombre);
         
         Editorial editorial = new Editorial();
+        
         editorial.setNombre(nombre);
         Date hoy = new Date();
         editorial.setAlta(hoy);
         
         if (editorialRepository.findAll().contains(editorialRepository.buscarPorNombre(nombre))) {
-            System.out.println("La editorial ya se encuentra registrada.");
+            throw new ErrorServicio("La Editorial ya se encuentra registrada.");
         }else{
-            editorialRepository.save(editorial);  
-            
+            editorialRepository.save(editorial); 
         }
         
     }

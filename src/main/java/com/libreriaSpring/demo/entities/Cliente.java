@@ -15,14 +15,14 @@ public class Cliente implements Serializable {
     private String id;
     
     private String nombre;
-    private Long documento;
+    private String documento;
     private String telefono;
     private Boolean alta;
 
     public Cliente() {
     }
 
-    public Cliente(String nombre, Long documento, String telefono, Boolean alta) {
+    public Cliente(String nombre, String documento, String telefono, Boolean alta) {
         this.nombre = nombre;
         this.documento = documento;
         this.telefono = telefono;
@@ -45,11 +45,11 @@ public class Cliente implements Serializable {
         this.nombre = nombre;
     }
 
-    public Long getDocumento() {
+    public String getDocumento() {
         return documento;
     }
 
-    public void setDocumento(Long documento) {
+    public void setDocumento(String documento) {
         this.documento = documento;
     }
 
