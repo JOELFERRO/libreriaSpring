@@ -4,6 +4,7 @@ import com.libreriaSpring.demo.entities.Cliente;
 import com.libreriaSpring.demo.exceptions.ErrorServicio;
 import com.libreriaSpring.demo.repositories.ClienteRepository;
 import java.util.List;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.transaction.Transactional;
@@ -38,6 +39,30 @@ public class ClienteServicio{
         
     }
     
+    @Transactional
+    public void eliminarCliente(String id){
+        clienteRepository.deleteById(id);
+    }
+    
+     @Transactional
+    public void editarCliente(String id, String nombre, String documento, String telefono) throws ErrorServicio{
+        
+        validacion(nombre, documento, telefono);
+        
+        Cliente cliente = clienteRepository.findById(id).get();
+        
+        cliente.setNombre(nombre);
+        cliente.setDocumento(documento);
+        cliente.setTelefono(telefono);
+        
+        clienteRepository.save(cliente);
+    }
+    
+    @Transactional
+    public Optional<Cliente> findClienteById(String id){
+        return clienteRepository.findById(id);
+    }
+    
     /*Lista de Clientes*/
     public List<Cliente> listarClientes(){
         return clienteRepository.findAll();
@@ -55,9 +80,9 @@ public class ClienteServicio{
         Matcher mDocumento = pNum.matcher(documento);
         Matcher mTelefono = pNumTel.matcher(telefono);
         
-        System.out.println(mNombre.matches());
-        System.out.println(mDocumento.matches());
-        System.out.println(mTelefono.matches());
+//        System.out.println(mNombre.matches());
+//        System.out.println(mDocumento.matches());
+//        System.out.println(mTelefono.matches());
         
         
         if(nombre == null || nombre.isEmpty()){

@@ -37,7 +37,7 @@ public class AutorController {
         try {
             autorServicio.guardarAutor(nombre);
         } catch (ErrorServicio ex) {
-            model.put("errorA", ex.getMessage());
+            model.put("error", ex.getMessage());
             model.put("nombre", nombre);
             
             Logger.getLogger(AutorController.class.getName()).log(Level.SEVERE, null, ex);

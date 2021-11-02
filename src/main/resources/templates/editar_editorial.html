@@ -22,10 +22,10 @@
             <h3 style="margin-top: 80px; text-align: center;">Modificar Editorial</h3>
             <form th:action="@{/editorial/modificar_editorial/__${id}__/__${nombre}__}" method="POST"> 
                 <p th:if="${errorE != null}" th:text="${errorE}" style="color: red;"></p>
-                <div class="form-group">
+                <div class="form-group card-body">
                     <br>
-                    <label for="exampleInputNombre">Ingrese el nuevo nombre:</label>
-                    <input type="text" class="form-control" name="nombre" th:value="${nombre}"/>
+                    <label for="exampleInputNombre"></label>
+                    <input type="text" class="form-control" name="nombre" placeholder="Nombre" th:value="${nombre}"/>
                 </div>
                 <button type="submit" class="btn btn-primary">Guardar</button>
             </form>

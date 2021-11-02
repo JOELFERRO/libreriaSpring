@@ -23,7 +23,7 @@ public class EditorialServicio {
         
         Editorial editorial = new Editorial();
         
-        editorial.setNombre(nombre);
+        editorial.setNombre(nombre.toUpperCase());
         Date hoy = new Date();
         editorial.setAlta(hoy);
         

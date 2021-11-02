@@ -45,7 +45,7 @@
                         <td th:text="${cliente.telefono}">telefono</td>
                         <td th:text="${cliente.alta}">alta</td>
                         <td><a th:href="@{/cliente/editar_cliente/__${cliente.id}__}">Editar</a></td>
-                        <td><a th:href="@{/cliente/eliminarCliente(id=${cliente.id})}">Eliminar</a></td>
+                        <td><a th:href="@{/cliente/eliminar_cliente(id=${cliente.id})}">Eliminar</a></td>
                     </tr>
                 </tbody>
             </table>

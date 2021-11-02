@@ -23,7 +23,7 @@ public class AutorServicio {
         
         Autor autor = new Autor();
         
-        autor.setNombre(nombre);
+        autor.setNombre(nombre.toUpperCase());
         Date hoy = new Date();
         autor.setAlta(hoy);
         
@@ -63,7 +63,7 @@ public class AutorServicio {
     private void validacion(String nombre)  throws ErrorServicio{
         /*Validaciones*/
         if (nombre == null || nombre.isEmpty()) {
-            throw new ErrorServicio("El nombre del autor no puede ser nulo o estar vacío.");
+            throw new ErrorServicio("No ha ingresado el nombre.");
         }
     }
 }

@@ -20,10 +20,12 @@ public class LibroServicio {
     @Transactional
     public void crearLibro (String titulo, Autor autor, Editorial editorial, Integer stock) throws ErrorServicio{
         
-        validacion(titulo);
+        String stockQ = stock.toString();
+        validacion(titulo, stockQ, stock);
         
         Libro libro = new Libro();
-        libro.setTitulo(titulo);
+        
+        libro.setTitulo(titulo.toUpperCase());
         libro.setStock(stock);
         libro.setPrestados(0);
         libro.setAutor(autor);
@@ -41,7 +43,8 @@ public class LibroServicio {
     @Transactional
     public void editarLibro(String id, String titulo, Autor autor, Editorial editorial, Integer stock) throws ErrorServicio{
         
-        validacion(titulo);
+        String stockQ = stock.toString();
+        validacion(titulo, stockQ, stock);
         
         Libro libro = libroRepository.findById(id).get();
         
@@ -53,10 +56,16 @@ public class LibroServicio {
         libroRepository.save(libro);        
     } 
     
-     private void validacion(String titulo) throws ErrorServicio{
+     private void validacion(String titulo, String stockQ, Integer stock) throws ErrorServicio{
         /*Validaciones*/
+
         if (titulo == null || titulo.isEmpty()) {
-            throw new ErrorServicio("El título del libro no puede ser nulo o estar vacío.");
+            throw new ErrorServicio("No ha ingresado el título del libro.");            
+        }
+        if (stockQ == null || stockQ.isEmpty()) {
+            throw new ErrorServicio("No ha ingresado el stock del libro.");
+        }else if(stock<=0){
+            throw new ErrorServicio("El stock no debe ser igual o inferior a cero.");
         }
     }
     

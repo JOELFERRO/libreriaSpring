@@ -37,7 +37,7 @@ public class EditorialController {
         try {    
             editorialServicio.guardarEditorial(nombre);
         } catch (ErrorServicio ex) {
-            model.put("errorE", ex.getMessage());
+            model.put("error", ex.getMessage());
             model.put("nombre", nombre);
             
             Logger.getLogger(EditorialController.class.getName()).log(Level.SEVERE, null, ex);

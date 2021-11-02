@@ -22,16 +22,23 @@
             <h3 style="margin-top: 80px; text-align: center;">Modificar Libro</h3>
             <form th:action="@{/libro/modificar_libro/__${id}__/__${titulo}__/__${nombreAutor}__/__${nombreEditorial}__/__${stock}__}" method="POST"> 
                 <p th:if="${errorE != null}" th:text="${errorE}" style="color: red;"></p>
-                <div class="form-group">
+                <div class="form-group card-body">
                     <br>
-                    <label for="exampleInputNombre">Título:</label>
-                    <input type="text" class="form-control" name="titulo" th:value="${titulo}"/>
-                    <label for="exampleInputNombre">Autor:</label>
-                    <input type="text" class="form-control" name="nombreAutor" th:value="${autor}"/>
-                    <label for="exampleInputNombre">Editorial:</label>
-                    <input type="text" class="form-control" name="nombreEditorial" th:value="${editorial}"/>
-                    <label for="exampleInputNombre">Cantidad de Ejemplares:</label>
-                    <input type="number" class="form-control" name="stock" th:value="${stock}"/>
+                    <label for="exampleInputNombre"></label>
+                    <input type="text" class="form-control" name="titulo" placeholder="Título" th:value="${titulo}"/>
+                    
+                    <label></label>
+                    <select class="form-control" name="autor">
+                        <option th:each="autor : ${autores}" th:value="${autor.id}" th:text="${autor.nombre}"></option>
+                    </select>
+                    
+                    <label for="exampleInputnombreEditorial"></label>                    
+                    <select class="form-control" name="editorial">
+                        <option th:each="editorial : ${editoriales}" th:value="${editorial.id}" th:text="${editorial .nombre}"></option>
+                    </select>
+                    
+                    <label for="exampleInputNombre"></label>
+                    <input type="number" class="form-control" name="stock" placeholder="Cantidad de ejemplares" th:value="${stock}"/>
                 </div>
                 <button type="submit" class="btn btn-primary">Guardar</button>
                 <br>

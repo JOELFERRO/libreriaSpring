@@ -14,34 +14,59 @@
 
     </head>
     <body>
-        
-       <header th:insert="index :: NavBar_index" header></header>
-       
+
+        <header th:insert="index :: NavBar_index" header></header>
+
         <div class="container">
             <br>
             <h3 class="display-2">Libro</h3>
             <br>
             <br>
             <h3 class="display-8">Cargar Libro</h3>
-            <form th:action="@{/libro/guardar_libro}" method="POST"> 
-                <p th:if="${error != null}" th:text="${error}" style="color: red;"></p>
+            <form th:action="@{/libro/guardar_libro}" method="POST">
+
+                <div th:if="${error != null}" th:text="${error}" class="alert alert-danger" role="alert"></div>
+
+                <!--                <div class="form-group">
+                                    <br>
+                                    <label for="exampleInputTitulo"></label>
+                                    <input type="text" class="form-control" name="titulo" placeholder="Título" th:value="${titulo}">
+                                    <label for="exampleInputnombreAutor"></label>
+                                    <input type="text" class="form-control" name="nombreAutor" placeholder="Autor" th:value="${autor}">
+                                    <label for="exampleInputnombreEditorial"></label>
+                                    <input type="text" class="form-control" name="nombreEditorial" placeholder="Editorial" th:value="${editorial}">
+                                    <label for="exampleInputnombreEditorial"></label>
+                                    <input type="number" min="0" class="form-control" name="stock" placeholder="Número de ejemplares" th:value="${stock}">
+                                </div>-->
+
                 <div class="form-group">
                     <br>
-                    <label for="exampleInputtitulo">Título:</label>
-                    <input type="text" class="form-control" name="titulo">
-                    <label for="exampleInputnombreAutor">Autor:</label>
-                    <input type="text" class="form-control" name="nombreAutor">
-                    <label for="exampleInputnombreEditorial">Editorial:</label>
-                    <input type="text" class="form-control" name="nombreEditorial">
-                    <label for="exampleInputnombreEditorial">Número de ejemplares:</label>
-                    <input type="number" class="form-control" name="stock">
+                    <label for="exampleInputTitulo"></label>
+                    <input type="text" class="form-control" name="titulo" placeholder="Título" th:value="${titulo}">
+
+                    <label></label>
+                    <!--<input type="text" class="form-control" name="nombreAutor" placeholder="Autor" th:value="${autor}">-->
+                    <select class="form-control" name="autor">
+                        <option th:each="autor : ${autores}" th:value="${autor.id}" th:text="${autor.nombre}"></option>
+                    </select>
+                    
+                    <label for="exampleInputnombreEditorial"></label>
+                    <!--<input type="text" class="form-control" name="nombreEditorial" placeholder="Editorial" th:value="${editorial}">-->
+                    <select class="form-control" name="editorial">
+                        <option th:each="editorial : ${editoriales}" th:value="${editorial.id}" th:text="${editorial .nombre}"></option>
+                    </select>
+                    
+                    <label for="exampleInputnombreEditorial"></label>
+                    <input type="number" min="0" class="form-control" name="stock" placeholder="Número de ejemplares" th:value="${stock}">
+
                 </div>
+                <br>
                 <button type="submit" class="btn btn-primary">Guardar</button>
             </form>
             <br>
             <br>
             <br>
-            <button class="btn bg-dark"><a th:href="@{/libro/listar_libros}">Lista de Autores</a></button>
+            <button class="btn bg-dark"><a th:href="@{/libro/listar_libros}">Lista de Libros</a></button>
         </div>            
     </body>
 </html>
